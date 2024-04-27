@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobin MARDI</title>
+    <link rel="icon" href="https://i.postimg.cc/J7YQ35nY/favicon-32x32.png" type="image/png"> <!-- Update href attribute with your image URL -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+Sharp&display=swap">
+    <style>
+        /* CSS styles for the top bar */
+        .top-bar {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: #fff; /* Text color */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-start; /* Left align */
+            align-items: center;
+            border-radius: 12px; /* Curved outline */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid purple; /* Purple outline */
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 1s forwards; /* Apply animation */
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Jersey Sharp', sans-serif; /* Use Jersey Sharp font */
+            transition: transform 0.2s ease; /* Add transition for smoother effect */
+        }
+        .logo:hover {
+            transform: scale(1.1); /* Scale up by 10% on hover */
+        }
+        /* CSS style for the body */
+        body {
+            background-color: #2e2e2e; /* Set background color to black */
+            color: #fff; /* Text color */
+            font-family: Arial, sans-serif; /* Use Arial font as backup */
+        }
+
+        /* Keyframes for the fadeIn animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px); /* Start slightly above */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* End at original position */
+            }
+        }
+
+        /* Additional info styles */
+        .additional-info {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid purple;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            margin-top: 10px; /* Reduced margin to bring the top bar and additional info closer */
+        }
+
+
+        .info-logo {
+            width: 80px; /* Increase size as needed */
+            height: 80px; /* Make it square */
+            border-radius: 50%; /* Make it circular */
+            margin-right: 20px; /* Add some space between the logo and text */
+        }
+
+
+        .info-text {
+            text-align: left; /* Left align text */
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar"> <!-- No fade-in class needed here -->
+    <a href="#" class="logo" onclick="location.reload();">.mdev</a> <!-- Add onclick event to reload page -->
+</div>
+
+<div class="additional-info">
+    <a href="https://github.com/MobinMardi" target="_blank"> <!-- Added anchor tag around the image -->
+        <img src="https://avatars.githubusercontent.com/u/165613890?v=4" alt="Info Logo" class="info-logo">
+    </a>
+    <div class="info-text">
+        <p>I am an 18-year-old Computer Engineering student from Iran. I am a passionate and eager software enthusiast with a strong desire to learn about new technologies.</p>
+        <p>For the past two years, I have gained valuable experience in Game development and Windows programming while working as a third-party developer for Riot Games.</p>
+        <p>My expertise includes Python, HTML, CSS, and C#.</p>
+    </div>
+</div>
+
+</body>
+</html>
