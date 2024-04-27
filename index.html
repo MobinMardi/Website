@@ -4,51 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobin MARDI</title>
-    <link rel="icon" href="https://i.postimg.cc/J7YQ35nY/favicon-32x32.png" type="image/png"> <!-- Update href attribute with your image URL -->
+    <link rel="icon" href="https://i.postimg.cc/J7YQ35nY/favicon-32x32.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+Sharp&display=swap">
     <style>
         /* CSS styles for the top bar */
         .top-bar {
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-            color: #fff; /* Text color */
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: #fff; 
             padding: 10px 20px;
             display: flex;
-            justify-content: flex-start; /* Left align */
+            justify-content: flex-start; 
             align-items: center;
-            border-radius: 12px; /* Curved outline */
-            backdrop-filter: blur(10px); /* Apply blur effect */
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
-            border: 1px solid purple; /* Purple outline */
-            opacity: 0; /* Initially hidden */
-            animation: fadeIn 1s forwards; /* Apply animation */
+            border-radius: 12px; 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+            border: 1px solid purple; 
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
         }
         .logo {
             font-size: 24px;
             font-weight: bold;
             text-decoration: none;
             color: #fff;
-            font-family: 'Jersey Sharp', sans-serif; /* Use Jersey Sharp font */
-            transition: transform 0.2s ease; /* Add transition for smoother effect */
+            font-family: 'Jersey Sharp', sans-serif; 
+            transition: transform 0.2s ease; 
         }
         .logo:hover {
-            transform: scale(1.1); /* Scale up by 10% on hover */
+            transform: scale(1.1); 
         }
         /* CSS style for the body */
         body {
-            background-color: #232323; /* Set background color to black */
-            color: #fff; /* Text color */
-            font-family: Arial, sans-serif; /* Use Arial font as backup */
+            background-image: url("https://images.hdqwalls.com/wallpapers/purple-minimal-dark-5k-7v.jpg");
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            color: #fff; 
+            font-family: Arial, sans-serif; 
         }
 
         /* Keyframes for the fadeIn animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-20px); /* Start slightly above */
+                transform: translateY(-20px); 
             }
             to {
                 opacity: 1;
-                transform: translateY(0); /* End at original position */
+                transform: translateY(0); 
             }
         }
 
@@ -66,37 +68,47 @@
             border: 1px solid purple;
             opacity: 0;
             animation: fadeIn 1s forwards;
-            margin-top: 10px; /* Reduced margin to bring the top bar and additional info closer */
+            margin-top: 10px; 
         }
 
 
         .info-logo {
-            width: 80px; /* Increase size as needed */
-            height: 80px; /* Make it square */
-            border-radius: 50%; /* Make it circular */
-            margin-right: 20px; /* Add some space between the logo and text */
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%; 
+            margin-right: 20px; 
         }
 
 
         .info-text {
-            text-align: left; /* Left align text */
+            text-align: left; 
         }
     </style>
 </head>
 <body>
 
-<div class="top-bar"> <!-- No fade-in class needed here -->
-    <a href="#" class="logo" onclick="location.reload();">.mdev</a> <!-- Add onclick event to reload page -->
+<div class="top-bar"> 
+    <a href="#" class="logo" onclick="location.reload();">.mdev</a> 
 </div>
 
 <div class="additional-info">
-    <a href="https://github.com/MobinMardi" target="_blank"> <!-- Added anchor tag around the image -->
+    <a href="https://github.com/MobinMardi" target="_blank"> 
         <img src="https://avatars.githubusercontent.com/u/165613890?v=4" alt="Info Logo" class="info-logo">
     </a>
     <div class="info-text">
         <p>Hello there! My name is Mobin Mardi. I am an 18-year-old Computer Engineering student from Iran. I am a passionate and eager software enthusiast with a strong desire to learn about new technologies.</p>
         <p>For the past two years, I have gained valuable experience in Game development and Windows programming while working as a third-party developer for Riot Games.</p>
         <p>My expertise includes Python, HTML, CSS, and C#.</p>
+    </div>
+</div>
+
+<div class="additional-info">
+    <a href="https://example.com" target="_blank"> 
+        <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1654585555653/b4pafSL1j.png" alt="Info Logo" class="info-logo"> 
+    </a>
+    <div class="info-text">
+        <p>This is the second additional info box.</p>
+        <p>Replace this content with your own.</p>
     </div>
 </div>
 
