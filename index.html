@@ -10,62 +10,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
     <style>
-        /* CSS styles for the top bar */
         .top-bar {
-            background-color: rgba(0, 0, 0, 0.5); 
-            color: #fff; 
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
             padding: 10px 20px;
             display: flex;
-            justify-content: center; /* Center the content horizontally */
+            justify-content: center;
             align-items: center;
-            border-radius: 0px; 
-            backdrop-filter: blur(10px); 
-            -webkit-backdrop-filter: blur(10px); 
-            border: 0px solid purple; 
-            position: fixed; /* Fix the top bar */
-            top: 0; /* Position at the top */
+            border-radius: 0px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0px solid purple;
+            position: fixed;
+            top: 0;
             left: 0;
             right: 0;
-            z-index: 1000; /* Ensure it's above other content */
-            opacity: 0; 
-            animation: fadeIn 1s forwards; 
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
         .logo {
             font-size: 32px;
             font-weight: 400;
             text-decoration: none;
             color: #fff;
-            font-family: "Jersey 25", sans-serif; /* Use Jersey 25 font for the logo */
+            font-family: "Jersey 25", sans-serif;
             transition: transform 0.2s ease;
             font-style: normal;
         }
         .logo:hover {
-            transform: scale(1.1); 
+            transform: scale(1.1);
         }
-        /* CSS style for the body */
         body {
             background-image: url("https://images.hdqwalls.com/wallpapers/purple-minimal-dark-5k-7v.jpg");
-            background-size: cover; /* Ensure the image covers the entire background */
-            background-repeat: no-repeat; /* Prevent the image from repeating */
-            color: #fff; 
-            font-family: 'Quicksand', sans-serif; /* Use Quicksand font for the rest of the content */
-            margin-top: 60px; /* Add space for the fixed top bar */
-            margin-bottom: 100px; /* Add space for the button */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 60px;
+            margin-bottom: 100px;
         }
-
-        /* Keyframes for the fadeIn animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-20px); 
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0); 
+                transform: translateY(0);
             }
         }
-
-        /* Additional info styles */
         .additional-info {
             background-color: rgba(0, 0, 0, 0.5);
             color: #fff;
@@ -79,30 +73,23 @@
             border: 1px solid purple;
             opacity: 0;
             animation: fadeIn 1s forwards;
-            margin-top: 10px; 
+            margin-top: 10px;
         }
-
-
         .info-logo {
-            width: 80px; 
-            height: 80px; 
-            border-radius: 50%; 
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             margin-right: 20px;
         }
-
-
         .info-text {
-            text-align: left; 
+            text-align: left;
         }
-
-        /* CSS styles for the bottom button */
         .bottom-button {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
         }
-
         .bottom-button a {
             background-color: #6c5ce7;
             color: #fff;
@@ -112,40 +99,34 @@
             border: 1px solid #6c5ce7;
             transition: background-color 0.3s ease;
         }
-
         .bottom-button a:hover {
             background-color: #4834d4;
         }
-
-        /* CSS styles for the bottom bar */
         .bottom-bar {
             position: absolute;
             bottom: 100;
             left: 0;
             width: 100%;
-            background-color: rgba(0, 0, 0, 0); /* Semi-transparent black background */
+            background-color: rgba(0, 0, 0, 0);
             color: #fff;
             text-align: center;
             padding: 10px 0;
             font-size: 14px;
-            backdrop-filter: blur(10px); /* Apply blur effect to the background */
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
-            border-top: 1px solid rgba(255, 255, 255, 0.1); /* White border at the top */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .copyright {
             margin: 0;
         }
     </style>
 </head>
 <body>
-
-<div class="top-bar"> 
-    <a href="#" class="logo" onclick="location.reload();">.mdev</a> 
+<div class="top-bar">
+    <a href="#" class="logo" onclick="location.reload();">.mdev</a>
 </div>
-
 <div class="additional-info">
-    <a href="https://github.com/MobinMardi" target="_blank"> 
+    <a href="https://github.com/MobinMardi" target="_blank">
         <img src="https://avatars.githubusercontent.com/u/165613890?v=4" alt="Info Logo" class="info-logo">
     </a>
     <div class="info-text">
@@ -153,20 +134,17 @@
         <p>For the past two years, I have gained valuable experience in Game development and Windows programming while working as a third-party developer for Riot Games.</p>
     </div>
 </div>
-
 <div class="additional-info">
-    <a> 
-        <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1654585555653/b4pafSL1j.png" alt="Info Logo" class="info-logo"> 
+    <a>
+        <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1654585555653/b4pafSL1j.png" alt="Info Logo" class="info-logo">
     </a>
     <div class="info-text">
         <h2>Summary / Objective:</h2>
         <p>Dedicated and motivated individual with a passion for sports, programming, and language proficiency. Seeking opportunities to leverage my skills mostly in programming (C# & Python), and language proficiency (IELTS and TOEFL) to contribute to a dynamic organization.</p>
-
         <h2>Education:</h2>
         <p>Diploma - Mobin High School, Tabriz, Iran<br>
         CE (Computer Engineering) - UCHNA, Tabriz, Iran<br>
         (Expected) Graduation Date: 2036</p>
-
         <h2>Skills:</h2>
         <p>- Boxing: 2 years of experience (self-educated)<br>
         - Gymnastics: a year of experience<br>
@@ -175,26 +153,16 @@
         - Language Proficiency: IELTS - 8, TOEFL - 109<br>
         - Programming: C# in Windows and Android (certificate with a perfect score of 100), Python programming language (certificate with a 12-hour course)<br>
         - ICDL (International Computer Driving License) certified</p>
-
         <h2>Certifications:</h2>
         <p>- Programming Certificate: C# in Windows and Android (Issued by MFT, Date of Completion: 2020)<br>
-
         <h2>Publications:</h2>
         <p>- Heavy-hearted, Mobin Mardi, 2022</p>
-
         <h2>Work Experience:</h2>
         <p>- Have produced many music on SoundCloud under the name of Zed Brock. (2018 - 2021)</p>
     </div>
 </div>
-
-<!-- Button at the bottom -->
-<!-- <div class="bottom-button">
-    <a href="guess-the-number.html">Bored? Play a game</a>
-</div> -->
-
 <div class="bottom-bar">
     <p class="copyright">Mobin Mardi ©️ 2024 - All Rights Reserved</p>
 </div>
-
 </body>
 </html>
