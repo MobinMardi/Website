@@ -41,6 +41,7 @@
             display: inline-block;
             cursor: pointer; /* Change cursor on hover */
             transition: transform 0.5s; /* Smooth transition */
+            user-select: none;
         }
         h1:hover {
             transform: scale(1.1); /* Scale on hover */
@@ -61,7 +62,7 @@
             clickCount++;
 
             if (clickCount >= 7) {
-                window.location.href = 'main.html';
+                window.location.href = 'preview.html';
             }
         });
     </script>
