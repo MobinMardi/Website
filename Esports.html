@@ -47,21 +47,14 @@
             animation: fadeIn 1s forwards;
         }
 
-        .top-bar-text {
-            font-family: 'Valorant', sans-serif;
-            font-size: 20px;
-            color: #fff;
-            text-decoration: none;
-            transition: transform 0.2s ease;
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
+        .top-bar img {
+            width: 100px;
+            height: auto;
+            transition: transform 0.3s ease; /* Added transition for hover effect */
         }
 
-        .top-bar-text:hover {
-            transform: scale(1.05);
+        .top-bar img:hover {
+            transform: scale(1.1); /* Scale up slightly on hover */
         }
 
         .custom-button {
@@ -188,31 +181,11 @@
             animation: fadeInPlayer 1s ease forwards;
             animation-delay: calc(var(--animation-order) * 0.1s); /* Delay each box */
         }
-
-        .bottom-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0); /* Transparent background */
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 14px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top: 0; /* Transparent border */
-            user-select: none; /* Disable user selection */
-        }
-
-        .copyright {
-            margin: 0;
-        }
     </style>
 </head>
 <body>
 <div class="top-bar">
-    <span class="top-bar-text">vALORaNT</span>
+    <img src="images/Valorant_logo.png" alt="Valorant Logo">
     <button class="custom-button" onclick="location.href='index.html';">
         <img src="images/MainPage.png" alt="Custom Icon">
     </button>
@@ -254,10 +227,6 @@
         <h3>Mehdi</h3>
         <p>Mehdi Messgar</p>
     </div>
-</div>
-
-<div class="bottom-bar">
-    <p class="copyright">Riot Games ©️ 2024 - All Rights Reserved</p>
 </div>
 </body>
 </html>
