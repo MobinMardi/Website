@@ -41,6 +41,10 @@
         .logo:hover {
             transform: scale(1.1);
         }
+        .button-container {
+            display: flex;
+            align-items: center;
+        }
         .custom-button {
             background-color: transparent;
             border: none;
@@ -51,6 +55,7 @@
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s ease;
+            margin-left: 10px;
         }
         .custom-button img {
             width: 20px; /* Smaller icon */
@@ -61,6 +66,12 @@
         }
         .custom-button:active {
             background-color: #4834d4;
+        }
+        .valorant-button:hover {
+            background-color: #fd4556; /* Hover color */
+        }
+        .valorant-button:active {
+            background-color: #bd3944; /* Active color */
         }
         body {
             background-image: url("https://papers.co/wallpaper/papers.co-se90-purple-shade-gradation-blur-36-3840x2400-4k-wallpaper.jpg");
@@ -145,9 +156,14 @@
 <body>
 <div class="top-bar">
     <a href="#" class="logo" onclick="location.reload();">.mdev</a>
-    <button class="custom-button" onclick="location.href='Esports.html'">
-        <img src="images/VCT-Logo-White.png" alt="Custom Icon">
-    </button>
+    <div class="button-container">
+        <button class="custom-button valorant-button" onclick="location.href='https://playvalorant.com/en-us/'">
+            <img src="images/V_Logomark_Off-White-Edited.png" alt="Valorant Icon">
+        </button>
+        <button class="custom-button" onclick="location.href='Esports.html'">
+            <img src="images/VCT-Logo-White.png" alt="Esports Icon">
+        </button>
+    </div>
 </div>
 <div class="additional-info">
     <a href="https://github.com/MobinMardi" target="_blank">
