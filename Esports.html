@@ -183,6 +183,115 @@
             animation: fadeInPlayer 1s ease forwards;
             animation-delay: calc(var(--animation-order) * 0.1s); /* Delay each box */
         }
+
+        /* Styles for the pop-up */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+        }
+
+        .popup-content {
+            background-color: #0000005b;
+            margin: 15% auto;
+            padding: 20px;
+            width: 25%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInPopup 0.3s ease-in-out;
+        }
+
+        .popup-content #agent-name {
+            color: #fff; /* Change the font color to white */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #a30000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .popup img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .popup p {
+            font-size: 18px;
+            margin: 0;
+            color: #000;
+        }
+
+        @keyframes fadeInPopup {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeOutPopup {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
+
+        .popup-content.fade-out {
+            animation: fadeOutPopup 0.3s ease-in-out forwards;
+        }
+
+        .agents-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; /* Add some space between agents */
+        }
+
+        .agent-info {
+            text-align: center;
+            margin: 5px; /* Space around each agent info block */
+        }
+
+        .agent-info img {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            margin-bottom: 5px;
+        }
+
+        .agent-info p {
+            color: #fff; /* Ensure text color is visible */
+            margin: 0;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -204,31 +313,95 @@
         <h3>SiLenT (Coach)</h3>
         <p>Amin Mardi</p>
     </div>
-    <div class="player-box" style="--animation-order: 2;">
+    <div class="player-box" style="--animation-order: 2;" data-agents='[{"name": "Jett", "icon": "images/agents/Jett_icon.webp"}, {"name": "Omen", "icon": "images/agents/Omen_icon.webp"}, {"name": "Skye", "icon": "images/agents/Skye_icon.webp"}]'>
         <img src="images/Default.jpg" alt="Player 2">
         <h3>mDev (IGL)</h3>
         <p>Mobin Mardi</p>
     </div>
-    <div class="player-box" style="--animation-order: 3;">
+    <div class="player-box" style="--animation-order: 3;" data-agents='[{"name": "Phoenix", "icon": "images/agents/Phoenix_icon.webp"}, {"name": "Deadlock", "icon": "images/agents/Deadlock_icon.webp"}]'>
         <img src="images/Default.jpg" alt="Player 3">
         <h3>Kagami</h3>
         <p>Hossein Messgar</p>
     </div>
-    <div class="player-box" style="--animation-order: 4;">
+    <div class="player-box" style="--animation-order: 4;" data-agents='[{"name": "Raze", "icon": "images/agents/Raze_icon.webp"}, {"name": "Killjoy", "icon": "images/agents/Killjoy_icon.webp"}]'>
         <img src="images/Default.jpg" alt="Player 4">
         <h3>HAddieS</h3>
         <p>Hadis Jabbarzadeh</p>
     </div>
-    <div class="player-box" style="--animation-order: 5;">
+    <div class="player-box" style="--animation-order: 5;" data-agents='[{"name": "Neon", "icon": "images/agents/Neon_icon.webp"}, {"name": "Cypher", "icon": "images/agents/Cypher_icon.webp"}]'>
         <img src="images/Default.jpg" alt="Player 5">
         <h3>ThunderSplash</h3>
         <p>Amirali Jafari</p>
     </div>
-    <div class="player-box" style="--animation-order: 6;">
+    <div class="player-box" style="--animation-order: 6;" data-agents='[{"name": "Reyna", "icon": "images/agents/Reyna_icon.webp"}]'>
         <img src="images/Default.jpg" alt="Player 6">
         <h3>Mehdi</h3>
         <p>Mehdi Messgar</p>
     </div>
 </div>
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-button" onclick="closePopup()">&times;</span>
+        <div id="agents-container" class="agents-container"></div>
+    </div>
+</div>
+
+<script>
+    // Function to open the pop-up with the player's agent information
+    function showPopup(agents) {
+        const agentsContainer = document.getElementById('agents-container');
+        agentsContainer.innerHTML = ''; // Clear previous content
+
+        agents.forEach(agent => {
+            const agentInfo = document.createElement('div');
+            agentInfo.classList.add('agent-info');
+            agentInfo.innerHTML = `
+                <img src="${agent.icon}" alt="${agent.name}">
+                <p>${agent.name}</p>
+            `;
+            agentsContainer.appendChild(agentInfo);
+        });
+
+        const popup = document.getElementById('popup');
+        const popupContent = document.querySelector('.popup-content');
+        popup.style.display = 'block';
+        popupContent.classList.remove('fade-out'); // Ensure fade-out class is removed
+    }
+
+    // Function to close the pop-up
+    function closePopup() {
+        const popupContent = document.querySelector('.popup-content');
+        popupContent.classList.add('fade-out'); // Trigger the fade-out animation
+        setTimeout(() => {
+            document.getElementById('popup').style.display = 'none';
+            popupContent.classList.remove('fade-out'); // Reset the fade-out class
+        }, 250); // Match this duration to the animation duration
+    }
+
+    // Event listeners for player boxes
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const popup = document.getElementById('popup');
+        const popupContent = document.querySelector('.popup-content');
+
+        // Event listener for clicks outside the popup
+        popup.addEventListener('mousedown', (event) => {
+            if (event.target === popup) {
+                closePopup();
+            }
+        });
+
+        // Event listeners for player boxes
+        const playerBoxes = document.querySelectorAll('.player-box');
+        playerBoxes.forEach(box => {
+            if (!box.querySelector('h3').innerText.includes('Coach')) {
+                box.addEventListener('click', () => {
+                    const agents = JSON.parse(box.getAttribute('data-agents'));
+                    showPopup(agents);
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
