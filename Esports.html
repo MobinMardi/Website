@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esports</title>
+    <link rel="icon" href="images/EV-No-BG.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Valorant';
+            src: url('Valorant-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background-image: url("https://papers.co/wallpaper/papers.co-se90-purple-shade-gradation-blur-36-3840x2400-4k-wallpaper.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 140px; /* Adjusted top margin for space */
+            margin-bottom: 100px;
+        }
+
+        .top-bar {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0px solid purple;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .top-bar-text {
+            font-family: 'Valorant', sans-serif;
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .top-bar-text:hover {
+            transform: scale(1.05);
+        }
+
+        .custom-button {
+            background-color: hsla(248, 65%, 52%, 0);
+            border: none;
+            border-radius: 12px;
+            padding: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .custom-button img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .custom-button:hover {
+            background-color: #4834d4;
+        }
+
+        .custom-button:active {
+            background-color: #4834d4;
+        }
+
+        .team-info {
+            text-align: center;
+            margin-bottom: 10px; /* Reduced bottom margin */
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 1s forwards;
+        }
+
+        .team-info img {
+            width: 80px; /* Adjust size as needed */
+            height: auto;
+            margin-right: 10px; /* Add margin to separate logo from text */
+            border-radius: 0%; /* Square shaped logo */
+            transition: none; /* Removed transition */
+            vertical-align: middle;
+            pointer-events: none; /* Disable pointer events */
+        }
+
+        .team-info h2 {
+            margin: 0;
+            font-size: 28px; /* Increased font size */
+            font-family: 'Helvetica', sans-serif; /* Changed font to Helvetica */
+            letter-spacing: 2px; /* Added letter spacing */
+            display: inline-block; /* Ensures both logo and name are on the same line */
+            vertical-align: middle; /* Aligns vertically with logo */
+            user-select: none; /* Disable user selection */
+        }
+
+        .players-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 10px; /* Reduced top margin */
+        }
+
+        .player-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+            width: 200px;
+            text-align: center;
+            margin-bottom: 10px; /* Reduced bottom margin */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, opacity 0.5s ease; /* Added opacity transition */
+            opacity: 0; /* Initially hidden */
+        }
+
+        .player-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .player-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px; /* Rounded corners for square images */
+            margin-bottom: 10px;
+            object-fit: cover; /* Ensure the image covers the entire box */
+        }
+
+        .player-box h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+            user-select: none; /* Disable user selection */
+        }
+
+        .player-box p {
+            margin: 5px 0;
+            color: #ddd;
+            font-size: 14px;
+            user-select: none; /* Disable user selection */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for fade-in animation of player boxes */
+        @keyframes fadeInPlayer {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Applying fade-in animation to player boxes */
+        .players-container .player-box {
+            animation: fadeInPlayer 1s ease forwards;
+            animation-delay: calc(var(--animation-order) * 0.1s); /* Delay each box */
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0); /* Transparent background */
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 0; /* Transparent border */
+            user-select: none; /* Disable user selection */
+        }
+
+        .copyright {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <span class="top-bar-text">vALORaNT</span>
+    <button class="custom-button" onclick="location.href='index.html';">
+        <img src="images/MainPage.png" alt="Custom Icon">
+    </button>
+</div>
+
+<div class="team-info">
+    <img src="images/EV-No-BG.png" alt="Team Logo">
+    <h2>Eclipse Vanguard</h2>
+</div>
+
+<div class="players-container">
+    <div class="player-box" style="--animation-order: 1;">
+        <img src="images/Default.jpg" alt="Player 1">
+        <h3>SiLenT (Coach)</h3>
+        <p>Amin Mardi</p>
+    </div>
+    <div class="player-box" style="--animation-order: 2;">
+        <img src="images/Default.jpg" alt="Player 2">
+        <h3>mDev (IGL)</h3>
+        <p>Mobin Mardi</p>
+    </div>
+    <div class="player-box" style="--animation-order: 3;">
+        <img src="images/Default.jpg" alt="Player 3">
+        <h3>Kagami</h3>
+        <p>Hossein Messgar</p>
+    </div>
+    <div class="player-box" style="--animation-order: 4;">
+        <img src="images/Default.jpg" alt="Player 4">
+        <h3>HAddieS</h3>
+        <p>Hadis Jabbarzadeh</p>
+    </div>
+    <div class="player-box" style="--animation-order: 5;">
+        <img src="images/Default.jpg" alt="Player 5">
+        <h3>ThunderSplash</h3>
+        <p>Amirali Jafari</p>
+    </div>
+    <div class="player-box" style="--animation-order: 6;">
+        <img src="images/Default.jpg" alt="Player 6">
+        <h3>Mehdi</h3>
+        <p>Mehdi Messgar</p>
+    </div>
+</div>
+
+<div class="bottom-bar">
+    <p class="copyright">Riot Games ©️ 2024 - All Rights Reserved</p>
+</div>
+</body>
+</html>
