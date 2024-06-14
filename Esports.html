@@ -28,6 +28,10 @@
             margin-bottom: 100px;
         }
 
+        .body-no-scroll {
+            overflow: hidden;
+        }
+
         .top-bar {
             background-color: rgba(0, 0, 0, 0.5);
             color: #fff;
@@ -350,6 +354,7 @@
         const popupContent = document.querySelector('.popup-content');
         popup.style.display = 'block';
         popupContent.classList.remove('fade-out'); // Ensure fade-out class is removed
+        document.body.classList.add('body-no-scroll'); // Disable scrolling
     }
 
     // Function to close the pop-up
@@ -359,6 +364,7 @@
         setTimeout(() => {
             document.getElementById('popup').style.display = 'none';
             popupContent.classList.remove('fade-out'); // Reset the fade-out class
+            document.body.classList.remove('body-no-scroll'); // Enable scrolling
         }, 250); // Match this duration to the animation duration
     }
 
