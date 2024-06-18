@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobin MARDI</title>
+    <title>.mdev</title>
     <link rel="icon" href="https://i.postimg.cc/J7YQ35nY/favicon-32x32.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
     <style>
+        /* Existing CSS */
         .top-bar {
             background-color: rgba(0, 0, 0, 0.5);
             color: #fff;
@@ -66,6 +67,12 @@
         }
         .custom-button:active {
             background-color: #4834d4;
+        }
+        .discord-button:hover {
+            background-color: #7289d2; /* Hover color */
+        }
+        .discord-button:active {
+            background-color: #5865F2; /* Active color */
         }
         .valorant-button:hover {
             background-color: #fd4556; /* Hover color */
@@ -151,12 +158,37 @@
         .copyright {
             margin: 0;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(72, 52, 212, 0.8);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(72, 52, 212, 1);
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: rgb(56, 40, 159);
+        }
+
     </style>
 </head>
 <body>
 <div class="top-bar">
     <a href="#" class="logo" onclick="location.reload();">.mdev</a>
     <div class="button-container">
+        <button class="custom-button discord-button" onclick="location.href='https://discord.com/invite/MKJCmkdhjt'">
+            <img src="images/discord-white-icon.png" alt="Discord Icon">
+        </button>
         <button class="custom-button valorant-button" onclick="location.href='https://playvalorant.com/en-us/'">
             <img src="images/V_Logomark_Off-White-Edited.png" alt="Valorant Icon">
         </button>
