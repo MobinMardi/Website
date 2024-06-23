@@ -26,6 +26,7 @@
             font-family: 'Quicksand', sans-serif;
             margin-top: 140px; /* Adjusted top margin for space */
             margin-bottom: 100px;
+            overflow: hidden;
         }
 
         .body-no-scroll {
@@ -279,6 +280,60 @@
             margin: 0;
             font-size: 14px;
         }
+
+        @keyframes fadeInButton {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Start slightly below and fade in */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sub-button {
+            display: block;
+            margin: 85px auto 0;
+            padding: 10px 20px;
+            background-color: rgba(72, 0, 255, 0.2);
+            border: 2px solid #ffffff00;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 18px;
+            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Ensure transform transition is here */
+            animation: fadeInButton 1s ease forwards;
+        }
+
+        .sub-button:hover {
+            background-color: rgba(42, 0, 149, 0.2);
+            transform: scale(1.05); /* Ensure transform scale is applied */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(72, 52, 212, 0.8);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(72, 52, 212, 1);
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: rgb(56, 40, 159);
+        }
+        
     </style>
 </head>
 <body>
@@ -326,6 +381,8 @@
         <p>Mehdi Messgar</p>
     </div>
 </div>
+
+<button class="sub-button" onclick="location.href='SubTeam.html';">Substitute Players</button>
 
 <div id="popup" class="popup">
     <div class="popup-content">
