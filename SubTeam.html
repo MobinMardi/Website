@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Substitute Players</title>
+    <link rel="icon" href="images/EV-No-BG.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Valorant';
+            src: url('Valorant-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background-image: url("https://papers.co/wallpaper/papers.co-se90-purple-shade-gradation-blur-36-3840x2400-4k-wallpaper.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            margin-top: 140px; /* Adjusted top margin for space */
+            margin-bottom: 100px;
+            overflow: hidden;
+        }
+
+        .body-no-scroll {
+            overflow: hidden;
+        }
+
+        .top-bar {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0px solid purple;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .top-bar img {
+            width: 100px;
+            height: auto;
+            transition: transform 0.3s ease; /* Added transition for hover effect */
+        }
+
+        .top-bar img:hover {
+            transform: scale(1.1); /* Scale up slightly on hover */
+        }
+
+        .custom-button {
+            background-color: hsla(248, 65%, 52%, 0);
+            border: none;
+            border-radius: 12px;
+            padding: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .custom-button img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .custom-button:hover {
+            background-color: #4834d4;
+        }
+
+        .custom-button:active {
+            background-color: #4834d4;
+        }
+
+        .team-info {
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: 10px; /* Reduced bottom margin */
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 1s forwards;
+        }
+
+        .team-info img {
+            width: 80px; /* Adjust size as needed */
+            height: auto;
+            margin-right: 10px; /* Add margin to separate logo from text */
+            border-radius: 0%; /* Square shaped logo */
+            transition: none; /* Removed transition */
+            vertical-align: middle;
+            pointer-events: none; /* Disable pointer events */
+        }
+
+        .team-info h2 {
+            margin: 0;
+            font-size: 36px; /* Adjusted font size for impact */
+            font-family: 'Bebas Neue', sans-serif; /* Changed font to Bebas Neue */
+            letter-spacing: 2px;
+            display: inline-block;
+            vertical-align: middle;
+            user-select: none;
+        }
+
+        .players-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 10px; /* Reduced top margin */
+        }
+
+        .player-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+            width: 200px;
+            text-align: center;
+            margin-bottom: 10px; /* Reduced bottom margin */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, opacity 0.5s ease; /* Added opacity transition */
+            opacity: 0; /* Initially hidden */
+        }
+
+        .player-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .player-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px; /* Rounded corners for square images */
+            margin-bottom: 10px;
+            object-fit: cover; /* Ensure the image covers the entire box */
+        }
+
+        .player-box h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+            user-select: none; /* Disable user selection */
+        }
+
+        .player-box p {
+            margin: 5px 0;
+            color: #80808088; /* Changed color to a shade of orange */
+            font-size: 14px;
+            user-select: none; /* Disable user selection */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for fade-in animation of player boxes */
+        @keyframes fadeInPlayer {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Applying fade-in animation to player boxes */
+        .players-container .player-box {
+            animation: fadeInPlayer 1s ease forwards;
+            animation-delay: calc(var(--animation-order) * 0.1s); /* Delay each box */
+        }
+
+        /* Styles for the pop-up */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+        }
+
+        .popup-content {
+            background-color: #0000005b;
+            margin: 15% auto;
+            padding: 20px;
+            width: 25%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInPopup 0.3s ease-in-out;
+        }
+
+        .popup-content #agent-name {
+            color: #fff; /* Change the font color to white */
+        }
+
+        .popup img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .popup p {
+            font-size: 18px;
+            margin: 0;
+            color: #000;
+        }
+
+        @keyframes fadeInPopup {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeOutPopup {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
+
+        .popup-content.fade-out {
+            animation: fadeOutPopup 0.3s ease-in-out forwards;
+        }
+
+        .agents-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; /* Add some space between agents */
+        }
+
+        .agent-info {
+            text-align: center;
+            margin: 5px; /* Space around each agent info block */
+        }
+
+        .agent-info img {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            margin-bottom: 5px;
+        }
+
+        .agent-info p {
+            color: #fff; /* Ensure text color is visible */
+            margin: 0;
+            font-size: 14px;
+        }
+
+        @keyframes fadeInButton {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Start slightly below and fade in */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sub-button {
+            display: block;
+            margin: 85px auto 0;
+            padding: 10px 20px;
+            background-color: rgba(72, 0, 255, 0.2);
+            border: 2px solid #ffffff00;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 18px;
+            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Ensure transform transition is here */
+            animation: fadeInButton 1s ease forwards;
+        }
+
+        .sub-button:hover {
+            background-color: rgba(42, 0, 149, 0.2);
+            transform: scale(1.05); /* Ensure transform scale is applied */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(72, 52, 212, 0.8);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(72, 52, 212, 1);
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: rgb(56, 40, 159);
+        }
+        
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <img src="images/Valorant_logo.png" alt="Valorant Logo">
+    <button class="custom-button" onclick="location.href='index.html';">
+        <img src="images/MainPage.png" alt="Custom Icon">
+    </button>
+</div>
+
+<div class="team-info">
+    <img src="images/EV-No-BG.png" alt="Team Logo">
+    <h2>EV Substitute Players</h2>
+</div>
+
+<div class="players-container">
+    <div class="player-box" style="--animation-order: 1;" data-agents='[{"name": "Fade", "icon": "images/agents/Fade_icon.webp"}, {"name": "Viper", "icon": "images/agents/Viper_icon.webp"}]'>
+        <img src="images/Default.jpg" alt="Player 1">
+        <h3>Light</h3>
+        <p>Ayda Noory</p>
+    </div>
+    <div class="player-box" style="--animation-order: 2;" data-agents='[{"name": "Jett", "icon": "images/agents/Jett_icon.webp"}, {"name": "Gekko", "icon": "images/agents/Gekko_icon.webp"}]'>
+        <img src="images/Default.jpg" alt="Player 2">
+        <h3>Dish</h3>
+        <p>Mohammad Messgar</p>
+    </div>
+    <div class="player-box" style="--animation-order: 3;" data-agents='[{"name": "Phoenix", "icon": "images/agents/Phoenix_icon.webp"}, {"name": "Jett", "icon": "images/agents/Jett_icon.webp"}]'>
+        <img src="images/Default.jpg" alt="Player 3">
+        <h3>MX</h3>
+        <p>Matin Zareh</p>
+    </div>
+</div>
+
+<button class="sub-button" onclick="location.href='Esports.html';">Main Team</button>
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <h3 style="color: #fff;">Signature Agents</h3> <!-- Title for the popup window -->
+        <div id="agents-container" class="agents-container"></div>
+    </div>
+</div>
+
+<script>
+    // Function to open the pop-up with the player's agent information
+    function showPopup(agents) {
+        const agentsContainer = document.getElementById('agents-container');
+        agentsContainer.innerHTML = ''; // Clear previous content
+
+        agents.forEach(agent => {
+            const agentInfo = document.createElement('div');
+            agentInfo.classList.add('agent-info');
+            agentInfo.innerHTML = `
+                <img src="${agent.icon}" alt="${agent.name}">
+                <p>${agent.name}</p>
+            `;
+            agentsContainer.appendChild(agentInfo);
+        });
+
+        const popup = document.getElementById('popup');
+        const popupContent = document.querySelector('.popup-content');
+        popup.style.display = 'block';
+        popupContent.classList.remove('fade-out'); // Ensure fade-out class is removed
+        document.body.classList.add('body-no-scroll'); // Disable scrolling
+    }
+
+    // Function to close the pop-up
+    function closePopup() {
+        const popupContent = document.querySelector('.popup-content');
+        popupContent.classList.add('fade-out'); // Trigger the fade-out animation
+        setTimeout(() => {
+            document.getElementById('popup').style.display = 'none';
+            popupContent.classList.remove('fade-out'); // Reset the fade-out class
+            document.body.classList.remove('body-no-scroll'); // Enable scrolling
+        }, 250); // Match this duration to the animation duration
+    }
+
+    // Event listeners for player boxes
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const popup = document.getElementById('popup');
+        const popupContent = document.querySelector('.popup-content');
+
+        // Event listener for clicks outside the popup
+        popup.addEventListener('mousedown', (event) => {
+            if (event.target === popup) {
+                closePopup();
+            }
+        });
+
+        // Event listeners for player boxes
+        const playerBoxes = document.querySelectorAll('.player-box');
+        playerBoxes.forEach(box => {
+            if (!box.querySelector('h3').innerText.includes('Coach')) {
+                box.addEventListener('click', () => {
+                    const agents = JSON.parse(box.getAttribute('data-agents'));
+                    showPopup(agents);
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
